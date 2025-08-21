@@ -1,22 +1,26 @@
 import express from "express";
 const app = express();
+app.use(express.json());
+
 const PORT = 5000;
 
 app.get("/", (req, res) => {
     res.send("hello all");
 });
 
-app.get("/register", (req, res) => {
-    res.send("this is register page");
-});
+app.post("/register", (req, res) => {
+    let userData = req.body
+    console.log(userData)
+   // res.json(userData)
 
-app.get("/Globalpage", (req, res) => {
-    res.send("this is Gloabl page");
-});
+    //or
+ res.json({msg:"user register successfully"})
+})
+
 //IN SIMPLE APP HAS 2 PRAMS 
 //METHOD ==> HTTP METHOD GET,POST,PUT,DELETE 
 
 
 app.listen(PORT,()=>{
     console.log("Server is running");
-});
+})
